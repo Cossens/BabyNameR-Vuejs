@@ -6,5 +6,5 @@ type Name @model {
   # Optional system fields (remove if not needed)
   createdAt: DateTime! # read-only (managed by Graphcool)
   updatedAt: DateTime! # read-only (managed by Graphcool)
-  Name: String!
+  name: String!
 }

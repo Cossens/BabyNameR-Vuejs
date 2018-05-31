@@ -6,8 +6,8 @@
 
 <template v-else>
   <ul>
-    <li v-for="post in allPosts" :key="post.id">
-      <post :post='post' class="post" />
+    <li v-for="name in allNames" :key="name.id">
+      <name :name='name' class="name" />
     </li>
   </ul>
 </template>
@@ -15,14 +15,14 @@
 </template>
 
 <style>
-  /*.post {
+  /*.name {
     margin-bottom: 20px;
     background-color:gray;
     border-radius:20px;
     border-shadow
   }*/
   
-  .post {
+  .name {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
@@ -43,22 +43,21 @@
   
   /* On mouse-over, add a deeper shadow */
   
-  .post:hover {
+  .name:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
 </style>
 
 <script>
   import gql from 'graphql-tag'
-  import Post from './Post.vue'
+  import Name from './Name.vue'
   
   // GraphQL query
   const FeedQuery = gql `
-    query allPosts {
-      allPosts(orderBy: createdAt_DESC) {
+    query allNames {
+      allNames(orderBy: createdAt_DESC) {
         id
-        imageUrl
-        description
+        name
       }
     }
   `
@@ -67,19 +66,19 @@
   export default {
     // Local state
     data: () => ({
-      allPosts: {},
+      allNames: {},
       loading: 0,
     }),
     // Apollo GraphQL
     apollo: {
-      allPosts: {
+      allNames: {
         query: FeedQuery,
         loadingKey: 'loading',
       },
     },
     components: {
       // <my-component> will only be available in parent's template
-      'post': Post
+      'name': Name
     }
   }
 </script>

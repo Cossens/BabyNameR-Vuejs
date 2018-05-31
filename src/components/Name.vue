@@ -1,7 +1,6 @@
 <template>
   <div class='container'>
-    <img :src='post.imageUrl' v-bind:style='image'>
-    <div>{{ post.description }}</div>
+    <div>{{ name.name }}</div>
   </div>
 </template>
 
@@ -14,10 +13,10 @@
       }
     }),
     props: {
-      post: {
+      name: {
         type: Object,
         default: function () {
-          return { description: '', imageUrl: '' }
+          return { name: '' }
         }
       },
     },

@@ -19,7 +19,7 @@ types: ./types.graphql
 
 
 functions:
-  hello:
+  name:
     handler:
       code: src/hello.js
     type: resolver

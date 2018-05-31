@@ -7,14 +7,14 @@
 </template>
 
 <script>
-import ListPage from './components/ListPage.vue'
-import CreatePost from './components/CreatePost.vue'
+import ListNames from './components/ListNames.vue'
+import CreateName from './components/CreateName.vue'
 
 export default {
   name: 'app',
   components: {
-    'feed': ListPage,
-    'create': CreatePost,
+    'feed': ListNames,
+    'create': CreateName,
   },
 }
 </script>

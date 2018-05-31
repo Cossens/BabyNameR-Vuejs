@@ -1,1 +1,3 @@
-{}
+targets:
+  BabyNameR: shared-eu-west-1/cjhuu14ld2fim0149u6upidab
+  default: BabyNameR

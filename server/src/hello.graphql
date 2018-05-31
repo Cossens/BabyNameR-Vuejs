@@ -1,7 +1,7 @@
-type HelloPayload {
-  message: String!
+type NamePayload {
+  name: String!
 }
 
 extend type Query {
-  hello(name: String): HelloPayload
+  name(name: String): NamePayload
 }

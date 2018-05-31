@@ -11,7 +11,6 @@
 ## Quickstart
 
 <!--
-For more information on how to get started [refer to the full vue-apollo-instagram tutorial](https://www.graph.cool/docs/quickstart/).
 -->
 
 ### 1. Clone example repository

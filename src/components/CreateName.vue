@@ -6,15 +6,14 @@
   
           <div class="modal-header">
             <slot name="header">
-              Add New Photo
+              Add New Name
             </slot>
           </div>
   
           <div class="modal-body">
             <slot name="body">
-              <input v-model="description" placeholder="Description">
-              <input v-model="imageUrl" placeholder="Image url">
-              <button @click="create">Create Post</button>
+              <input v-model="name" placeholder="Name">
+              <button @click="create">Create Name</button>
             </slot>
           </div>
   
@@ -29,55 +28,50 @@
         </div>
       </div>
     </div>
-    <div class='createPost' @click="showModal = true">
+    <div class='createName' @click="showModal = true">
   
       <img src="http://www.startuppassion.eu/wp-content/uploads/2017/03/plus-sign.png" class="plusImage" alt=""><br>
-      <button class='newPost' >NEW POST</button>
+      <button class='newName' >NEW NAME</button>
     </div>
   </div>
 </template>
 
 <script>
   import gql from 'graphql-tag'
-  const createPost = gql `
-    mutation createPost($description: String!, $imageUrl: String!) {
-      createPost(description: $description, imageUrl: $imageUrl) {
+  const createName = gql `
+    mutation createName($name: String!) {
+      createName(name: $name) {
         id
-        imageUrl
-        description
+        name
       }
     }
   `
   export default {
     data: () => ({
-      description: '',
-      imageUrl: '',
+      name: '',
       showModal: false,
     }),
   
     // Attribute
     methods: {
       create() {
-        const description = this.description
-        const imageUrl = this.imageUrl
+        const name = this.name
   
-        this.description = ''
-        this.imageUrl = ''
+        this.name = ''
   
         // Mutation
         this.$apollo.mutate({
-          mutation: createPost,
+          mutation: createName,
           variables: {
-            description,
-            imageUrl,
+            name,
           },
           updateQueries: {
-            allPosts: (prev, {
+            allNames: (prev, {
               mutationResult
             }) => {
               return {
-                // append at head of list because we sort the posts reverse chronological
-                allPosts: [mutationResult.data.createPost, ...prev.allPosts],
+                // append at head of list because we sort the names reverse chronological
+                allNames: [mutationResult.data.createName, ...prev.allNames],
               }
             },
           },
@@ -95,7 +89,7 @@
 </script>
 
 <style>
-  .createPost {
+  .createName {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
@@ -105,11 +99,11 @@
     float: left;
   }
   
-  .createPost:hover {
+  .createName:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
   
-  .newPost {
+  .newName {
     border: none;
     color: gray;
     background-color: white;
